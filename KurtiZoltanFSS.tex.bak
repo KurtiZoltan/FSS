@@ -1,0 +1,166 @@
+\documentclass[pdftex,12pt,a4paper]{article}
+\pdfpagewidth 8.5in
+\pdfpageheight 11.6in
+\linespread{1.3}
+\usepackage{anysize}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage[unicode,pdftex]{hyperref}
+%\usepackage{hyperref}
+\usepackage{breqn}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.3,0.3,0.3}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.90,0.90,0.87}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\small\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\DeclareMathOperator{\Ai}{Ai}
+\DeclareMathOperator{\Bi}{Bi}
+\DeclareMathOperator{\Aip}{Ai^\prime}
+\DeclareMathOperator{\Bip}{Bi^\prime}
+\DeclareMathOperator{\Ti}{Ti}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\sgn}{sgn}
+%\DeclareMathOperator{\max}{max}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\op}[1]{\hat{#1}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+
+\newcommand{\aeqref}[1]{\az{\eqref{#1}}}
+\newcommand{\Aeqref}[1]{\Az{\eqref{#1}}}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\hypersetup{	
+	pdftitle={Folyadékszcintillációs spektroszkópia},
+	pdfauthor={Kürti Zoltán}}
+
+\frenchspacing
+\begin{document}
+
+	\centerline{\bf\LARGE Folyadékszcintillációs spektroszkópia}
+
+	\vskip0.4truein\centerline{\Large\sc Kürti Zoltán}\vskip0.10truein
+	%\centerline{\includegraphics[scale=0.5]{./elte_cimer_color.pdf}}
+	\vskip0.4truein
+	\centerline{\Large B csoport}\vskip0.2truein
+	\centerline{\Large{Mérés dátuma: 2021. december 9.}}\vskip0.2truein
+	\centerline{\Large{Beadás dátuma: \today}}\vskip0.2truein
+	\thispagestyle{empty}
+	\newpage
+	%\tableofcontents
+	%\newpage
+	\section{Bevezetés}
+		A folyadékszcintillációs spektroszkópia előnye, hogy kis áthatoló képességű sugárzás mérésére is alkalmas. Ezen sugárzások mérése más módszerekkel nem előnyös, mivel mind a detektor esetleges burkolása, mind a minta önárnyékolása a kis áthatoló képességű sugárzás mérését lehetetlenné vagy nagyon nehézkessé teszi. A folyadékszcintilláció lehetővé teszi ilyen sugárzások spektrumának mérését is. Ilyen az alfa és béta sugárzás. A mérés feltétele, hogy a sugárforrást fel lehessen oldani. Az oldatban a sugárzás fékeződés során az energiájának egy részét elektromágneses sugárzásként adja le. Ez a sugárzás túl nagy energiájú az ideális detektáláshoz, ezért további két feloldott anyag az oldószerben a nagyobb energiájú fotonokat több kisebb energiájú fotonná konvertálják. Ezeknek a hullámhossza már ideális a detektálásra, fotoelektron-sokszorozóval mértük meg a bomlás után keletkezett fotonok számát.
+		
+		A mérés során a $^{14}\mathrm{C}$ béta bomló izotóp sugárzását vizsgáltuk. A béta sugárzásérdekes abból a szempontból, hogy a bomlás során három részecske között oszlik el a felszabaduló energia. Ez azt jelenti, hogy az elektron energiáját nem rögzíti egyértelműen a impulzus és energia megmaradása.
+		\begin{equation}
+			^{14}\mathrm{C}\rightarrow ^{14}\mathrm{N}^++e^{-}+\bar\nu_e
+		\end{equation}
+		Az anya elem és a termékek nyugalmi tömegének különbségét $Q/c^2$-tel jelöljük,
+		\begin{equation}
+			Q = \left(m_{^{14}\mathrm{C}} - m_{^{14}\mathrm{N}^+} - m_{e^-} - m_{\bar\nu_e}\right)c^2.
+		\end{equation}
+		Ezen szén izotóp esetében $Q=156keV$. Ez a keletkező elektron maximális energiája, amennyiben eltekintünk az atommag visszalökődéséhez szükséges energiáról (a $^{14}\mathrm{C}$ atommag több mint $10^4$-szer nehezebb, mint az elektron). A neutrínó tömege nem nulla, de ezen számolások során nullának tekinthető, hiszen máig a legpontosabb mérések nem tudtak 0-tól különböző alsó határt meghatározni az elektron neutrínó tömegére, a felső határ pedig $1eV$ alatt van.
+	\section{Kiértékelés}
+	\subsection{Átlagos energia}
+		Mag és részecskefizika előadáson bizonyos feltevésekkel levezettük, hogy az elektron átlagos energiája $Q/3$ lesz. A feltevések a valóságban nem pontosan teljesülnek, az eltérést az $F(Z, E)$ és $S(Z, E)$ függvények tartalmazzák.
+		
+		A mérés alapján az átlagos energiát a következőképpen határoztam meg. A kalibrálás után öt spektrumot vettünk fel. Ezekre  egyenként kiszámoltam az empirikus energia átlagot,
+		\begin{equation}
+			E = \frac{\sum_iN_iE_i}{\sum_iN_i}.
+		\end{equation}
+		$E_i$ az $i$-edik csatornához tartozó energia, $N_i$ pedig a beütésszám az $i$-edik csatornában. A kapott átlagos energiák rendre $49,553keV$, $49,521keV$, $49,553keV$, $49,631keV$ és $49,617keV$ lettek. Az átlagok átlaga meghatározza a kombinált átlagos energiát, a szórást pedig az empirkus szórás formulával határozom meg,
+		\begin{equation}
+			\sigma^2 = \frac{1}{N-1}\sum\left(E - \bar E\right)^2.
+		\end{equation}
+		$\bar E$ az öt mért átlagos energia átlaga. Ezek alapján az átlagos energia kalibrálás után $E=(49,575\pm0,047)keV$. A várt érték $Q/3=52keV$ statisztikailag szignifikánsan különbözik a mért átlagos energiától.
+		
+		Ennek oka, hogy a kimenő elektron nem pontosan síkhullám, hiszen kölcsönhat az atommag töltésével. Ezt a fermi-függvény $F(Z, E)$ korrigálná. További hiba, hogy $156keV$ már összemérhető az elektron tömegével, így relativisztikus effektusok felléphetnek. Feltételeztük, hogy a kirepülő elektron és antineutrínó iránya független. Ezeket és még más hibákat az $S(Z, E)$ alakfaktor veszi figyelembe. Ismerve, hogy az előadáson elvégzett számolás mennyi egyszerűsítést használt, a mérési eredmény szerintem reálisan megközelíti a $Q/3$ értéket, persze a különbség statisztikailag szignifikáns, emlékeztetve arra, hogy az elhanyagolt effektusuk természetesen léteznek és fontosak.
+		
+		Egymintás t-próbával is megvizsgáltam, hogy statisztikailag szignifikánsan különbözik-e a mért átlag a várt $Q/3$ energiától. A különbség statisztikailag szignifikáns volt, $p=3.4\cdot10^{-8}$ p-értékkel.
+	\subsection{Kalibrálás hatása}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{spectra.pdf}
+			\caption{A kalibrálás előtti és utáni összesített spektrum.}
+			\label{spectra}
+		\end{figure}
+		A kalibrálás előtti és utáni felvett spektrumok összehasonlítására két módszert használtam. Az egyik a páros t-próba volt, a másik a Wilcoxon próba volt. A t-próba feltételezi, hogy a két spektrum közötti eltérés gauss eloszlás. Mivel tudjuk, hogy mindegyik csatornában Poisson eloszlású a beütések száma, így az eltérés eloszlását is meg tudjuk határozni. Nagy beütés számok esetében valóban normál Gauss eloszlás lesz, mivel a Poisson eloszlás közelíthető Gauss eloszlással nagy beütésszám esetén. Viszont viszonylag sok csatornában a beütésszám 100 alatti, ezek esetében már megkérdőjelezhető az eltérés Gauss eloszlással aló közelítésének helyessége. Amennyiben ez valóban problémát okoz, használható a Wilcoxon próba, mivel ennek nem feltétele, hogy az eltérés normál eloszlás legyen.
+		
+		A páros t-próbánál ki kell számítani a két spektrum eltérését. Ennek átlaga $\bar{x_d}$. Az eltérések szórását $s_d$ jelöli. Ezen jelölésekkel
+		\begin{equation}
+			t = \frac{\bar{x_d}}{\frac{s_d}{\sqrt{n}}}.
+		\end{equation}
+		Ezt a t értéket kell összevetni a Student-eloszlással, amiből megkaptam a p-értéket. Ezt a tesztet elvégezve az első öt és utolsó öt spektrum összegére, a p-érték $p=0.54$ lett. Ez statisztikailag nem jelent szignifikáns különbséget a két spektrum között.
+		
+		A Wilcoxon próba esetében a kiszámítandó érték
+		\begin{equation}
+			T = \sum_i \sgn\left(x_i\right)R_i.
+		\end{equation}
+		$x_i$ az összetartozó csatornákban a különbségek. $R_i$-k a csatornaszámok egy permutációja. Ez az $R_i$ permutáció olyan, hogy $i < j \Rightarrow \left| x_{R_i} \right| < \left| x_{R_j} \right|$. A kapott $T$ érték és a szabadsági fokok száma alapján (csatornaszám-1) a p érték megkapható a $T$-re vonatkozó eloszlásból. Ez a próba $p=0.25$ értéket ad, ami erősebb eredmény, de még mindig nem mondható statisztikusan szignifikáns különbségnek.
+		
+		Érdekességként kiszámoltam mind a 10 felvett spektrum statisztikáit, és ábrázoltam őket egy két dimenziós ábrán. A sorok és oszlopok az eloszlások sorszámát jelölik, a pixel színe pedig a p-értéket.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{t.pdf}
+			\caption{A felett spektrumok t-próba alapján kapott p-értékek.}
+			\label{ttest}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{wilcoxon.pdf}
+			\caption{A felett spektrumok Wilcoxon-próba alapján kapott p-értékek.}
+			\label{Wilcoxon}
+		\end{figure}
+		Amennyiben az első öt és második öt eloszlás hasonlóak, mivel ugyan azon beállítások mellett készült spektrumok, és a két csoport szignifikánsan különböznek, ezeknek az ábráknak "blokkokból" kellene állniuk. Ezt \aref{demo}. ábra szemlélteti.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{demo.pdf}
+			\caption{Szignifikánsan különböző beállítások esetén ilyen ábrára számítok.}
+			\label{demo}
+		\end{figure}
+		
+		A kalibrálás nem változtatta meg a felett spektrumot statisztikailag szignifikáns módon.
+	\bibliographystyle{abeld}
+    %\bibliography{ref}
+\end{document}
